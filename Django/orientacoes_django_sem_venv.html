@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venv - Django - API de Projetos</title>
+</head>
+<body>
+    <main>
+        <p>
+            <h4>Instalando Ambiente Virtual VENV</h4>
+
+            01 - INSTALAR Ambiente Virtual VENV (No Terminal VSCode PowerShell)
+            => pip install virtualenv
+
+            02 - CRIAR e Nomear o Ambiente Virtual (Venv ou outro Nome)
+            => python -m venv nome_do_ambiente_escolhido
+
+            #Atenção - Se o Ambiente for Ativado dentro da Pasta Que foi criada anteriormente, deve entrar na pasta primeiro com comando:
+            => cd .\cadastro_curso_womakers
+
+            03 - ATIVAR o Ambiente Virtual Venv
+            => venv\Scripts\activate
+            ou
+            => .\Script\activate
+
+            04 - DESATIVAR o ambiente Virtual Venv 
+            => deactivate
+
+            <!-- 
+            PS C:\Projetos_MM\001-Projeto> venv\Scripts\activate
+            (venv) PS C:\Projetos_MM\001-Projeto> deactivate
+            PS C:\Projetos_MM\001-Projeto> cd .\cadastro_curso_womakers
+            PS C:\Projetos_MM\001-Projeto\cadastro_curso_womakers> .\Scripts\activate
+            (cadastro_curso_womakers) PS C:\Projetos_MM\001-Projeto\cadastro_curso_womakers> 
+
+             -->
+
+        </p>
+        <p>
+            <h4>Instalando Django no projeto:</h4>
+
+            01 - Com o ambiente virtual Ativado (No Terminal VSCode PowerShell)
+            => pip install django
+
+            #Ele irá INSTALAR 3 pastas no seu projeto -> Script / Lib / Include
+            -Na Lib - ficará tudo que for instalado
+            -Na Script
+            -Na Include 
+
+            02 - CRIAR pasta PROJETO 
+            => django-admin startproject projeto_womakers .
+            (NÃO ESQUECER O PONTO senão ele cria 3 pastas e não 1)
+
+            #Ao criar essa pasta acima ele traz em esquema de arquivos de configuração (__init__.py, asgi.py, settings.py, urls.py, wsgi.py)
+
+            03 - Para RODAR o Sistema Django e verificar se está ok: 
+            => python manage.py runserver (enter)
+
+            #Deve aprarecer msg e um link www/http para mostrar que o servidor está rodando LOCALMENTE no navegador.
+
+            #aparece msg longa e um teecho em vermelho, mas ok se aparecer: Starting development server at http://127......../  clica no link Followlink e abrirá no navegador.
+
+            04 - Para interromper o Servidor:
+            => CTRL + C => Interrompe o Servidor!
+
+            05 - Para Criar UM NOVO Aplicativo (Não sei o que é NOME = base)
+            => python manage.py startapp base (enter)
+
+            #(base -> Funcionalidades específicas - visual, cadastro de cursos, alunos etc)
+
+            #*Toda vez que criamos novo aplicativo, precisamos REGISTRAR no arquivo settings.py!!! ('base',)Installed_apps = e escreva o nome, no caso seria o ('base',).
+
+        </p>
+        <p>
+            <!--
+            PS C:\Projetos_MM\001-Projeto> cd .\cadastro_curso_womakers
+            PS C:\Projetos_MM\001-Projeto\cadastro_curso_womakers> .\Scripts\activate
+            (cadastro_curso_womakers) PS C:\Projetos_MM\001-Projeto\cadastro_curso_womakers>
+            Collecting django
+            Collecting sqlparse>=0.3.1 (from django)
+            Using cached sqlparse-0.4.4-py3-none-any.whl (41 kB)
+            Collecting tzdata (from django)
+            Using cached tzdata-2024.1-py2.py3-none-any.whl.metadata (1.4 kB)
+            Using cached Django-5.0.2-py3-none-any.whl (8.2 MB)
+            Using cached asgiref-3.7.2-py3-none-any.whl (24 kB)
+            Using cached tzdata-2024.1-py2.py3-none-any.whl (345 kB)
+            Installing collected packages: tzdata, sqlparse, asgiref, django
+            Successfully installed asgiref-3.7.2 django-5.0.2 sqlparse-0.4.4 tzdata-2024.1
+            (cadastro_curso_womakers) PS C:\Projetos_MM\001-Projeto\cadastro_curso_womakers>
+                                                                                                            django-admin startproject projeto_womakers .
+            (cadastro_curso_womakers) PS C:\Projetos_MM\001-Projeto\cadastro_curso_womakers>
+
+
+            python manage.py runserver
+            Watching for file changes with StatReloader
+            Performing system checks...
+
+            You have 18 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions.
+            Run 'python manage.py migrate' to apply them.
+            February 13, 2024 - 22:10:09
+            Django version 5.0.2, using settings 'projeto_womakers.settings'
+            Starting development server at http://127.0.0.1:8000/
+            Quit the server with CTRL-BREAK.
+
+            [13/Feb/2024 22:11:21] "GET / HTTP/1.1" 200 10629
+            Not Found: /favicon.ico
+            [13/Feb/2024 22:11:21] "GET /favicon.ico HTTP/1.1" 404 2120
+            (cadastro_curso_womakers) PS C:\Projetos_MM\001-Projeto\cadastro_curso_womakers> python manage.py startapp base
+            (cadastro_curso_womakers) PS C:\Projetos_MM\001-Projeto\cadastro_curso_womakers>
+
+            python manage.py runserver    
+            Watching for file changes with StatReloader
+            Performing system checks...
+
+            System check identified no issues (0 silenced).
+
+            You have 18 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions.
+            Run 'python manage.py migrate' to apply them.
+            February 13, 2024 - 22:19:28
+            Django version 5.0.2, using settings 'projeto_womakers.settings'
+            Starting development server at http://127.0.0.1:8000/
+            Quit the server with CTRL-BREAK.
+
+            [13/Feb/2024 22:24:10] "GET / HTTP/1.1" 200 10629
+ 
+             -->
+        </p>
+        <p>
+            acho que posso apagar o venv pasta abaixo
+
+            PS C:\Projetos_MM\MM-Projeto-Python_Django_Venv_API> cd .\cadastro_curso_womakers
+            PS C:\Projetos_MM\MM-Projeto-Python_Django_Venv_API\cadastro_curso_womakers> .\Scripts\activate
+            (cadastro_curso_womakers) PS C:\Projetos_MM\MM-Projeto-Python_Django_Venv_API\cadastro_curso_womakers> 
+
+        </p>
+    </main>
+    
+</body>
+</html>
