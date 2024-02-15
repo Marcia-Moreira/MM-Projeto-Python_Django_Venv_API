@@ -22,7 +22,7 @@
             03 - ATIVAR o Ambiente Virtual Venv
             => venv\Scripts\activate
             ou
-            => .\Script\activate
+            => .\Scripts\activate
 
             04 - DESATIVAR o ambiente Virtual Venv 
             => deactivate
@@ -35,6 +35,10 @@
             (cadastro_curso_womakers) PS C:\Projetos_MM\001-Projeto\cadastro_curso_womakers> 
 
              -->
+
+            Atenção -> Problemas com PIP - Para reinstalar:
+
+            =>  python -m ensurepip --upgrade
 
         </p>
         <p>
@@ -132,6 +136,179 @@
             PS C:\Projetos_MM\MM-Projeto-Python_Django_Venv_API> cd .\cadastro_curso_womakers
             PS C:\Projetos_MM\MM-Projeto-Python_Django_Venv_API\cadastro_curso_womakers> .\Scripts\activate
             (cadastro_curso_womakers) PS C:\Projetos_MM\MM-Projeto-Python_Django_Venv_API\cadastro_curso_womakers> 
+
+        </p>
+
+        <p>
+            <h4>Views - arquivo views.py</h4>
+
+            #Cada página é uma view e uma view pode ser direcionada para várias coisas:
+
+            from django.shortcuts import render
+            # Importar Tabela http:
+            from django.http import HttpResponse
+
+            # Create your views here.
+            #Tela 01
+            def inicio(request):
+                return HttpResponse('Olá mundo!')
+
+            #Tela 02
+            def cadastro(request):
+                pass
+
+            Arquivo views.py 
+            <!-- 
+            from django.shortcuts import render
+            # Importar Tabela http:
+            from django.http import HttpResponse
+
+            # Create your views here.
+            #Tela 01
+            def inicio(request):
+                return HttpResponse('Olá mundo!')
+
+            #Tela 02
+            def inicioHtml(request):
+                html = '''
+                    <!DOCTYPE html>
+                    <html lang="en">
+                    <head>
+                        <title> Cursos online </title>
+                    </head>
+                    <body>
+                        <h1>Olá Mundo!</h1>
+                    </body>
+                    </html
+            '''
+                return HttpResponse(html)
+
+            #Tela 03
+            def cadastro(request):
+                pass
+             -->
+        </p>
+
+        <p>
+            <h4>URLs </h4>
+            <!-- 
+                """
+            URL configuration for projeto_womakers project.
+
+            The `urlpatterns` list routes URLs to views. For more information please see:
+                https://docs.djangoproject.com/en/5.0/topics/http/urls/
+            Examples:
+            Function views
+                1. Add an import:  from my_app import views
+                2. Add a URL to urlpatterns:  path('', views.home, name='home')
+            Class-based views
+                1. Add an import:  from other_app.views import Home
+                2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+            Including another URLconf
+                1. Import the include() function: from django.urls import include, path
+                2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+            """
+            from django.contrib import admin
+            from django.urls import path
+            # Incluir da pasta base(aplicativo) criada:
+            from base.views import inicio
+            from base.views import inicioHtml
+
+            #Lista de Urls
+            urlpatterns = [
+                #http://127.0.0.1:8000/admin/login/?next=/admin/
+                path('admin/', admin.site.urls),
+                #http://127.0.0.1:8000/
+                path('', inicio), #O vazio renderiza imediatamente a pagina virando um index sem url específica
+                #poderia ser:  #http://127.0.0.1:8000/Inicio
+                #path('Inicio', inicio),
+                path('inicioHtml', inicioHtml),
+            ]
+             -->
+
+            <!-- 
+            February 14, 2024 - 14:07:48
+            Django version 5.0.2, using settings 'projeto_womakers.settings'
+            Starting development server at http://127.0.0.1:8000/
+            Quit the server with CTRL-BREAK.
+
+            [14/Feb/2024 14:07:51] "GET / HTTP/1.1" 200 11
+            [14/Feb/2024 14:08:01] "GET /admin/ HTTP/1.1" 302 0
+            [14/Feb/2024 14:08:01] "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4158
+            [14/Feb/2024 14:08:18] "GET /inicioHtml HTTP/1.1" 200 203
+            [14/Feb/2024 14:08:31] "GET /admin/ HTTP/1.1" 302 0
+            [14/Feb/2024 14:08:31] "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4158
+            [14/Feb/2024 14:11:09] "GET / HTTP/1.1" 200 11
+             -->
+
+            <!-- 
+            PS C:\Projetos_MM\MM_Projeto-Python_Django_Venv_API> cd .\cadastro_curso_womakers
+            PS C:\Projetos_MM\MM_Projeto-Python_Django_Venv_API\cadastro_curso_womakers> venv\Scripts\activate    
+            venv\Scripts\activate: The module 'venv' could not be loaded. For more information, run 'Import-Module venv'.
+            PS C:\Projetos_MM\MM_Projeto-Python_Django_Venv_API\cadastro_curso_womakers> .\Scripts\activate       
+            (cadastro_curso_womakers) PS C:\Projetos_MM\MM_Projeto-Python_Django_Venv_API\cadastro_curso_womakers> python manage.py runserver
+            Watching for file changes with StatReloader
+            Performing system checks...
+
+            System check identified no issues (0 silenced).
+
+            You have 18 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions.
+            Run 'python manage.py migrate' to apply them.
+            February 14, 2024 - 13:34:18
+            Django version 5.0.2, using settings 'projeto_womakers.settings'
+            Starting development server at http://127.0.0.1:8000/
+            Quit the server with CTRL-BREAK.
+
+            [14/Feb/2024 13:34:26] "GET / HTTP/1.1" 200 11
+             -->
+
+        </p>
+        <p>
+            <h4>Templates</h4>
+
+            Precisa organizar as "Rotas" do http dos arquivos: views.py e urls.py
+
+            Conforme páginas do projeto.
+
+        </p>
+
+        <p>
+            <h4> Instalar BootStrap Django no Projeto </h4>
+
+            - No Terminal PowerShel do VSCode, com Ambiente Virtual (Venv) ativo, sem estar rodando Django, dentro da pasta do projeto:
+            => pip install django-bootstrap-v5   <!--!Pendente -->
+
+            - Depois de instalado, precisamos REGISTRAR no projeto, dentro do arquivo "settings.py" / INSTALLED_APPS:  'base', 'bootstrap-v5'
+
+            <!--! - ERRO -> Não consigo instalar o bootstrap de forma alguma!!!!! Já tentei reinstalar o pip, parece que é falha no Python dentro do ambiente virtual mas não consigo resolver! -->
+
+        </p>
+
+        <p>
+            <h4> Instalando Python por Width no Terminal PowerShell VsCode </h4>
+
+            => winget install python
+
+            => pip list
+
+            Continua não funcionando
+            => pip install django-bootstrap-v5
+
+        </p>
+
+        <p>
+            <h4> Terminal CMD Prompt de Comando </h4>
+
+            Microsoft Windows [versão 10.0.22631.3155]
+            (c) Microsoft Corporation. Todos os direitos reservados.
+
+            C:\Users\mmnol>python --version
+            Python 3.12.1
+
+            C:\Users\mmnol>pip --version
+            pip 23.2.1 from C:\Users\mmnol\AppData\Local\Programs\Python\Python312\Lib\site-packages\pip (python 3.12)
+
+            C:\Users\mmnol>
 
         </p>
     </main>

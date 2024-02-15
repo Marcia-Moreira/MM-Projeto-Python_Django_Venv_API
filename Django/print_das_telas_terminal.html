@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <p>
+            <!-- 
+PS C:\Projetos_MM\MM_Projeto-Python_Django_Venv_API> pip --version
+pip 23.2.1 from C:\Users\mmnol\AppData\Local\Programs\Python\Python312\Lib\site-packages\pip (python 3.12)
+PS C:\Projetos_MM\MM_Projeto-Python_Django_Venv_API> python --version  
+Python 3.12.1
+PS C:\Projetos_MM\MM_Projeto-Python_Django_Venv_API> pip install virtualenv
+Collecting virtualenv
+  Obtaining dependency information for virtualenv from https://files.pythonhosted.org/packages/83/22/54b1180756d2d6194bcafb7425d437c3034c4bff92129c3e1e633079e2c4/virtualenv-20.25.0-py3-none-any.whl.metadata
+  Downloading virtualenv-20.25.0-py3-none-any.whl.metadata (4.5 kB)
+Collecting distlib<1,>=0.3.7 (from virtualenv)
+  Obtaining dependency information for distlib<1,>=0.3.7 from https://files.pythonhosted.org/packages/8e/41/9307e4f5f9976bc8b7fea0b66367734e8faf3ec84bc0d412d8cfabbb66cd/distlib-0.3.8-py2.py3-none-any.whl.metadata
+  Downloading distlib-0.3.8-py2.py3-none-any.whl.metadata (5.1 kB)
+Collecting filelock<4,>=3.12.2 (from virtualenv)
+  Obtaining dependency information for filelock<4,>=3.12.2 from https://files.pythonhosted.org/packages/81/54/84d42a0bee35edba99dee7b59a8d4970eccdd44b99fe728ed912106fc781/filelock-3.13.1-py3-none-any.whl.metadata
+  Downloading filelock-3.13.1-py3-none-any.whl.metadata (2.8 kB)
+Collecting platformdirs<5,>=3.9.1 (from virtualenv)
+  Obtaining dependency information for platformdirs<5,>=3.9.1 from https://files.pythonhosted.org/packages/55/72/4898c44ee9ea6f43396fbc23d9bfaf3d06e01b83698bdf2e4c919deceb7c/platformdirs-4.2.0-py3-none-any.whl.metadata
+  Downloading platformdirs-4.2.0-py3-none-any.whl.metadata (11 kB)
+Downloading virtualenv-20.25.0-py3-none-any.whl (3.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.8/3.8 MB 332.2 kB/s eta 0:00:00
+Downloading distlib-0.3.8-py2.py3-none-any.whl (468 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 468.9/468.9 kB 93.5 kB/s eta 0:00:00
+Downloading filelock-3.13.1-py3-none-any.whl (11 kB)
+Downloading platformdirs-4.2.0-py3-none-any.whl (17 kB)
+Installing collected packages: distlib, platformdirs, filelock, virtualenv
+Successfully installed distlib-0.3.8 filelock-3.13.1 platformdirs-4.2.0 virtualenv-20.25.0
+
+[notice] A new release of pip is available: 23.2.1 -> 24.0
+[notice] To update, run: python.exe -m pip install --upgrade pip
+PS C:\Projetos_MM\MM_Projeto-Python_Django_Venv_API> python -m venv cadastro_curso_womakers
+PS C:\Projetos_MM\MM_Projeto-Python_Django_Venv_API> cd .\cadastro_curso_womakers
+PS C:\Projetos_MM\MM_Projeto-Python_Django_Venv_API\cadastro_curso_womakers> .\Scripts\activate
+(cadastro_curso_womakers) PS C:\Projetos_MM\MM_Projeto-Python_Django_Venv_API\cadastro_curso_womakers> pip list
+Package Version
+------- -------
+pip     23.2.1
+WARNING: There was an error checking the latest version of pip.
+(cadastro_curso_womakers) PS C:\Projetos_MM\MM_Projeto-Python_Django_Venv_API\cadastro_curso_womakers> python --version      
+Python 3.12.1
+(cadastro_curso_womakers) PS C:\Projetos_MM\MM_Projeto-Python_Django_Venv_API\cadastro_curso_womakers> pip --version
+pip 23.2.1 from C:\Projetos_MM\MM_Projeto-Python_Django_Venv_API\cadastro_curso_womakers\Lib\site-packages\pip (python 3.12)
+(cadastro_curso_womakers) PS C:\Projetos_MM\MM_Projeto-Python_Django_Venv_API\cadastro_curso_womakers> python -m ensurepip --upgrade
+Looking in links: c:\Users\mmnol\AppData\Local\Temp\tmp5qscfgsu
+Requirement already satisfied: pip in c:\projetos_mm\mm_projeto-python_django_venv_api\cadastro_curso_womakers\lib\site-packages (23.2.1)
+(cadastro_curso_womakers) PS C:\Projetos_MM\MM_Projeto-Python_Django_Venv_API\cadastro_curso_womakers> python manage.py runserver
+C:\Users\mmnol\AppData\Local\Programs\Python\Python312\python.exe: can't open file 'C:\\Projetos_MM\\MM_Projeto-Python_Django_Venv_API\\cadastro_curso_womakers\\manage.py': [Errno 2] No such file or directory
+(cadastro_curso_womakers) PS C:\Projetos_MM\MM_Projeto-Python_Django_Venv_API\cadastro_curso_womakers> pip install django
+Collecting django
+  Obtaining dependency information for django from https://files.pythonhosted.org/packages/50/1b/7536019fd20654919dcd81b475fee1e54f21bd71b2b4e094b2ab075478b2/Django-5.0.2-py3-none-any.whl.metadata
+  Downloading Django-5.0.2-py3-none-any.whl.metadata (4.1 kB)
+Collecting asgiref<4,>=3.7.0 (from django)
+  Obtaining dependency information for asgiref<4,>=3.7.0 from https://files.pythonhosted.org/packages/9b/80/b9051a4a07ad231558fcd8ffc89232711b4e618c15cb7a392a17384bbeef/asgiref-3.7.2-py3-none-any.whl.metadata
+  Downloading asgiref-3.7.2-py3-none-any.whl.metadata (9.2 kB)
+Collecting sqlparse>=0.3.1 (from django)
+  Obtaining dependency information for sqlparse>=0.3.1 from https://files.pythonhosted.org/packages/98/5a/66d7c9305baa9f11857f247d4ba761402cea75db6058ff850ed7128957b7/sqlparse-0.4.4-py3-none-any.whl.metadata
+  Downloading sqlparse-0.4.4-py3-none-any.whl.metadata (4.0 kB)
+Collecting tzdata (from django)
+  Obtaining dependency information for tzdata from https://files.pythonhosted.org/packages/65/58/f9c9e6be752e9fcb8b6a0ee9fb87e6e7a1f6bcab2cdc73f02bb7ba91ada0/tzdata-2024.1-py2.py3-none-any.whl.metadata
+  Downloading tzdata-2024.1-py2.py3-none-any.whl.metadata (1.4 kB)
+Downloading Django-5.0.2-py3-none-any.whl (8.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.2/8.2 MB 3.8 MB/s eta 0:00:00
+Downloading asgiref-3.7.2-py3-none-any.whl (24 kB)
+Downloading sqlparse-0.4.4-py3-none-any.whl (41 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 41.2/41.2 kB 1.9 MB/s eta 0:00:00
+Downloading tzdata-2024.1-py2.py3-none-any.whl (345 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 345.4/345.4 kB 5.3 MB/s eta 0:00:00
+Installing collected packages: tzdata, sqlparse, asgiref, django
+Successfully installed asgiref-3.7.2 django-5.0.2 sqlparse-0.4.4 tzdata-2024.1
+WARNING: There was an error checking the latest version of pip.
+(cadastro_curso_womakers) PS C:\Projetos_MM\MM_Projeto-Python_Django_Venv_API\cadastro_curso_womakers> django-admin startproject projeto_womakers .
+(cadastro_curso_womakers) PS C:\Projetos_MM\MM_Projeto-Python_Django_Venv_API\cadastro_curso_womakers> python manage.py runserver
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+
+You have 18 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions.      
+Run 'python manage.py migrate' to apply them.
+February 15, 2024 - 14:57:38
+Django version 5.0.2, using settings 'projeto_womakers.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+
+(cadastro_curso_womakers) PS C:\Projetos_MM\MM_Projeto-Python_Django_Venv_API\cadastro_curso_womakers> python manage.py startapp base
+(cadastro_curso_womakers) PS C:\Projetos_MM\MM_Projeto-Python_Django_Venv_API\cadastro_curso_womakers> pip install django-bootstrap-v5
+Collecting django-bootstrap-v5
+  Downloading django_bootstrap_v5-1.0.11-py3-none-any.whl (24 kB)
+Collecting beautifulsoup4<5.0.0,>=4.8.0 (from django-bootstrap-v5)
+  Obtaining dependency information for beautifulsoup4<5.0.0,>=4.8.0 from https://files.pythonhosted.org/packages/b1/fe/e8c672695b37eecc5cbf43e1d0638d88d66ba3a44c4d321c796f4e59167f/beautifulsoup4-4.12.3-py3-none-any.whl.metadata
+  Downloading beautifulsoup4-4.12.3-py3-none-any.whl.metadata (3.8 kB)
+Collecting django<5.0,>=2.2 (from django-bootstrap-v5)
+  Obtaining dependency information for django<5.0,>=2.2 from https://files.pythonhosted.org/packages/20/8c/498ce1ac30228f3bc36d4d427fe10268bd01e6f0361ead6c60b2b255c6b6/Django-4.2.10-py3-none-any.whl.metadata
+  Downloading Django-4.2.10-py3-none-any.whl.metadata (4.1 kB)
+Collecting soupsieve>1.2 (from beautifulsoup4<5.0.0,>=4.8.0->django-bootstrap-v5)
+  Obtaining dependency information for soupsieve>1.2 from https://files.pythonhosted.org/packages/4c/f3/038b302fdfbe3be7da016777069f26ceefe11a681055ea1f7817546508e3/soupsieve-2.5-py3-none-any.whl.metadata
+  Downloading soupsieve-2.5-py3-none-any.whl.metadata (4.7 kB)
+Requirement already satisfied: asgiref<4,>=3.6.0 in c:\projetos_mm\mm_projeto-python_django_venv_api\cadastro_curso_womakers\lib\site-packages (from django<5.0,>=2.2->django-bootstrap-v5) (3.7.2)
+Requirement already satisfied: sqlparse>=0.3.1 in c:\projetos_mm\mm_projeto-python_django_venv_api\cadastro_curso_womakers\lib\site-packages (from django<5.0,>=2.2->django-bootstrap-v5) (0.4.4)
+Requirement already satisfied: tzdata in c:\projetos_mm\mm_projeto-python_django_venv_api\cadastro_curso_womakers\lib\site-packages (from django<5.0,>=2.2->django-bootstrap-v5) (2024.1)
+Downloading beautifulsoup4-4.12.3-py3-none-any.whl (147 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 147.9/147.9 kB 628.7 kB/s eta 0:00:00
+Downloading Django-4.2.10-py3-none-any.whl (8.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.0/8.0 MB 730.7 kB/s eta 0:00:00
+Downloading soupsieve-2.5-py3-none-any.whl (36 kB)
+Installing collected packages: soupsieve, django, beautifulsoup4, django-bootstrap-v5
+  Attempting uninstall: django
+    Found existing installation: Django 5.0.2
+    Uninstalling Django-5.0.2:
+      Successfully uninstalled Django-5.0.2
+Successfully installed beautifulsoup4-4.12.3 django-4.2.10 django-bootstrap-v5-1.0.11 soupsieve-2.5
+WARNING: There was an error checking the latest version of pip.
+(cadastro_curso_womakers) PS C:\Projetos_MM\MM_Projeto-Python_Django_Venv_API\cadastro_curso_womakers> 
+             -->
+        </p>
+    </main>
+</body>
+</html>

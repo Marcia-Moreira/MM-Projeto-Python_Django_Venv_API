@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <p>
+            <h4>Dentro de Diretório da Pasta Principal sem Ambiente Virtual</h4>
+
+            PS C:\Projetos_MM\MM_Projeto-Python_Django_Venv_API> pip --version
+            pip 23.2.1 from C:\Users\mmnol\AppData\Local\Programs\Python\Python312\Lib\site-packages\pip (python 3.12)
+            PS C:\Projetos_MM\MM_Projeto-Python_Django_Venv_API> python --version  
+            Python 3.12.1
+            PS C:\Projetos_MM\MM_Projeto-Python_Django_Venv_API> 
+        </p>
+        <p>
+            <h4> Ambiente Virtual - cadastro_curso_womakers </h4>
+            <!-- Instalar o VirtualEnv -->
+            => pip install virtualenv
+            <!-- Criar Pasta do Ambiente Virtual (Nomear ou pôr venv) -->
+            => python -m venv cadastro_curso_womakers    #(nome_do_ambiente_escolhido)
+            <!-- Entrar na Pasta Criada acima -->
+            => cd .\cadastro_curso_womakers
+            <!-- Ativar o Ambiente Virtual -->
+            => .\Scripts\activate    #(ou venv\Scripts\activate)
+            <!-- Para parar o ambiente virtual -->
+            => deactivate
+        </p>
+        <p>
+            <h4> Para Verificar as Versões dentro do Ambiente Virtual ativo</h4>
+            => pip list
+            => python --version
+            => pip --version
+        </p>
+        <p>
+            <h4> Para RODAR o Python </h4>
+            => python manage.py runserver
+        </p>
+        <p>
+            <h4>Instalando Django no projeto:</h4>
+
+            01 - Com o ambiente virtual Ativado (No Terminal VSCode PowerShell)
+            => pip install django
+
+            #Ele irá INSTALAR 3 pastas no seu projeto -> Script / Lib / Include
+            -Na Lib - ficará tudo que for instalado
+            -Na Script
+            -Na Include 
+
+            02 - CRIAR pasta PROJETO 
+            => django-admin startproject projeto_womakers .
+            (NÃO ESQUECER O PONTO senão ele cria 3 pastas e não 1)
+
+            #Ao criar essa pasta acima ele traz em esquema de arquivos de configuração (__init__.py, asgi.py, settings.py, urls.py, wsgi.py)
+
+            03 - Para RODAR o Sistema Django e verificar se está ok: 
+            => python manage.py runserver (enter)
+
+            #Deve aprarecer msg e um link www/http para mostrar que o servidor está rodando LOCALMENTE no navegador.
+
+            #aparece msg longa e um teecho em vermelho, mas ok se aparecer: Starting development server at http://127......../  clica no link Followlink e abrirá no navegador.
+
+            04 - Para interromper o Servidor:
+            => CTRL + C => Interrompe o Servidor!
+
+            05 - Para Criar UM NOVO Aplicativo (Não sei o que é NOME = base)
+            => python manage.py startapp base (enter)
+
+            #(base -> Funcionalidades específicas - visual, cadastro de cursos, alunos etc)
+
+            #*Toda vez que criamos novo aplicativo, precisamos REGISTRAR no arquivo settings.py!!! ('base',)Installed_apps = e escreva o nome, no caso seria o ('base',).
+        </p>
+        <p>
+            <h4> Instalar BootStrap Django no Projeto </h4>
+
+            - No Terminal PowerShel do VSCode, com Ambiente Virtual (Venv) ativo, sem estar rodando Django, dentro da pasta do projeto:
+            => pip install django-bootstrap-v5
+
+            - Depois de instalado, precisamos REGISTRAR no projeto, dentro do arquivo "settings.py" / INSTALLED_APPS:  'base', 'bootstrap-v
+        </p>
+        <p>
+            <h4>Pasta cadastro_curso_womakers/ projeto_womakers/ arquivo settings.py</h4>
+
+            - Depois de instalados, precisamos REGISTRAR no projeto, dentro do arquivo "settings.py" / INSTALLED_APPS:  'base', 'bootstrap-v
+        </p>
+
+
+        <!-- ================================================================== -->
+        <p>
+            <h4>Views - Pasta cadastro_curso_womakers/base/views.py </h4>
+
+            #Cada página é uma view e uma view pode ser direcionada para várias coisas:
+<!-- 
+from django.shortcuts import render
+# Importar Tabela http:
+from django.http import HttpResponse
+
+# Create your views here.
+#Admin Padrão do Django
+# http://127.0.0.1:8000/admin/login/?next=/admin/
+
+#Tela 01 - Teste
+# http://127.0.0.1:8000/inicio_teste
+def inicio_teste(request):
+    return HttpResponse('Olá mundo!')
+
+#Tela 02 - Teste
+# http://127.0.0.1:8000/inicioHtml
+def inicioHtml(request):
+    html = '''
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <title> Cursos online </title>
+        </head>
+        <body>
+            <h1> Olá Mundo! </h1>
+        </body>
+        </html
+'''
+    return HttpResponse(html)
+
+#Tela 03 - Teste
+# http://127.0.0.1:8000/inicioHtmlArq
+def inicioHtmlArq(request):
+    return render(request, 'inicioHtmlArq.html')
+
+#Tela 04 - Valendo
+# http://127.0.0.1:8000/
+def inicio(request):
+    return render(request, 'inicio.html')
+
+#Tela 05 - Teste
+# def cadastro(request):
+    # pass
+
+#Tela 06 - Valendo
+# http://127.0.0.1:8000/cadastro
+def cadastro(request):
+    return render(request, 'cadastro.html')
+ -->
+        </p>
+        <p>
+            <h4>URLs - Pasta projeto_womakers/urls.py </h4>
+            <!-- 
+"""
+URL configuration for projeto_womakers project.
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/5.0/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+from django.contrib import admin
+from django.urls import path
+# Incluir da pasta base(aplicativo) criada:
+from base.views import inicio_teste
+from base.views import inicioHtml
+from base.views import inicioHtmlArq
+# Rodando Valendo:
+from base.views import inicio, cadastro
+
+#Lista de Urls
+urlpatterns = [
+    #http://127.0.0.1:8000/admin/login/?next=/admin/
+    path('admin/', admin.site.urls),
+    #http://127.0.0.1:8000/
+    path('inicio_teste', inicio_teste),
+    path('inicioHtml', inicioHtml),
+    path('inicioHtmlArq', inicioHtmlArq),
+    # path ('inicio', inicio),
+
+    # RODANDO OK
+    path('', inicio),
+    path('cadastro/', cadastro),
+]
+
+'''
+Anotação:
+    path('', inicio), #O vazio renderiza imediatamente a pagina virando um index sem url específica
+    #poderia ser:  #http://127.0.0.1:8000/Inicio
+    #path('Inicio', inicio),
+'''
+             -->
+        </p>
+        <p>
+            <h4>Templates</h4>
+
+            Precisa organizar as "Rotas" do http dos arquivos: views.py e urls.py
+
+            Conforme páginas do projeto.
+        </p>
+        <p>
+            <h1>Pasta cadastro_curso_womakers/ base/ static e templates </h1>
+
+            -Criar Pastas static e templates dentro da pasta base.
+
+            Na Pasta Static -> Colocar os arquivos:
+            - CSS 
+            - Bootstrap.bundle.min.js
+            - Bootstrap.min.css 
+            - starter-templaste.css
+
+            Na Pasta Templates -> Colocar os arquivos:
+            - index.html
+            
+        </p>
+
+    </main>
+</body>
+</html>
