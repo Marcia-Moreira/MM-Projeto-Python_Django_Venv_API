@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'base',
-    # 'django.bootstrap-v5',
+    'bootstrap5',
 ]
 
 MIDDLEWARE = [
@@ -81,6 +81,8 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# Caso não queira usar sqlite, deve declarar os parâmetros do outro db aqui!
 
 
 # Password validation

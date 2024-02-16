@@ -17,11 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 # Incluir da pasta base(aplicativo) criada:
-from base.views import inicio_teste
-from base.views import inicioHtml
-from base.views import inicioHtmlArq
+from base.views_duplicando import inicio_teste
+from base.views_duplicando import inicioHtml
+from base.views_duplicando import inicioHtmlArq
 # Rodando Valendo:
-from base.views import inicio, cadastro
+from base.views_duplicando import inicio
+from base.views_duplicando import cadastro
 
 #Lista de Urls
 urlpatterns = [

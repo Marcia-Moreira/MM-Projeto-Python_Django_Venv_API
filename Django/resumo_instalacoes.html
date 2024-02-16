@@ -79,12 +79,12 @@
             - No Terminal PowerShel do VSCode, com Ambiente Virtual (Venv) ativo, sem estar rodando Django, dentro da pasta do projeto:
             => pip install django-bootstrap-v5
 
-            - Depois de instalado, precisamos REGISTRAR no projeto, dentro do arquivo "settings.py" / INSTALLED_APPS:  'base', 'bootstrap-v
+            - Depois de instalado, precisamos REGISTRAR no projeto, dentro do arquivo "settings.py" / INSTALLED_APPS:  'base', 'bootstrap5',
         </p>
         <p>
             <h4>Pasta cadastro_curso_womakers/ projeto_womakers/ arquivo settings.py</h4>
 
-            - Depois de instalados, precisamos REGISTRAR no projeto, dentro do arquivo "settings.py" / INSTALLED_APPS:  'base', 'bootstrap-v
+            - Depois de instalados, precisamos REGISTRAR no projeto, dentro do arquivo "settings.py" / INSTALLED_APPS:  'base', 'bootstrap5',
         </p>
 
 
@@ -215,6 +215,210 @@ Anotação:
             Na Pasta Templates -> Colocar os arquivos:
             - index.html
             
+        </p>
+        <p>
+            https://github.com/IsadoraFerrao/Sistema-Cadastro-Cursos/tree/aula_03
+        </p>
+        <p>
+            <h4>Forms.py - DJango Forms </h4>
+            https://github.com/IsadoraFerrao/Sistema-Cadastro-Cursos/tree/aula_04
+
+            - Criar arquivo forms.py dentro do "base"
+
+            1- Classe do Formulário (quais campos vamos validar)
+
+            2- Field - Tipo do campo (textarea? email?)
+
+            3- WidGets - não sei
+        </p>
+        <p>
+            <h4>Banco de Dados - models.py </h4>
+
+            01 - Arquivo models.py
+            No Django, o banco de dados Sempre deve estar dentro do arquivo models.py! 
+
+            02 - Classes x Tabelas
+            uma Models É uma abstração que permitem que classes python, representem tabelas de banco de dados.
+            Cada Classe vai representar uma Tabela!
+
+            03 - CONFIGURAÇÃO -> Arquivo settings.py / DATABASES
+            No arquivo Settings, podemos ver que o padrão de DB do Django é o SQLite3! Se quiser usar outro, deve ser declarado os parâmetros nesse arquivo.
+
+            04 - Arquivo db.sqlites.db
+            Quando criamos o DJango ele já cria o arquivinho automaticamente: db.sqlite3.db
+
+            05 - SQLITE VIEWER - Extensão no VSCode
+            Também precisamos baixar a extensão SQLITE VIEWER no VSCode, para editar o Banco de Dados dentro do próprio VSCode, e para não precisar usar nenhum outro programa de edição de banco de dados como DBeaver, por exemplo.
+
+            06 - CRIE AS CLASSES (tabelas)
+            
+            Por fim -> Edite as Classes (das Tabelas) dentro do models.py
+
+            07 - NO TERMINAL: Comandos Gerar informações e Enviar para db
+
+            # Para GERAR o ARQUIVO com as Informações (Não envia!)
+            # quero fazer alterações no db: 
+
+                # => python manage.py makemigrations
+                #(Ele vai criar um arquivo de registro)
+                            
+                (cadastro_curso_womakers) PS C:\Projetos_MM\MM_Projeto-Python_Django_Venv_API\cadastro_curso_womakers> python manage.py makemigrations
+                Migrations for 'base':
+                base\migrations\0001_initial.py
+                    - Create model Cadastro
+
+            # Para ENVIAR de fato as informações geradas anteriormente no arquivo:
+
+                # => python manage.py migrate
+
+                # (Envia de fato para o Banco de Dados)
+                # (Obs.: Na primeira vez, é gerada um monte de tabelas automaticamente)
+                # A que importa efetivamente é a base.0001_initial... ok
+
+                (cadastro_curso_womakers) PS C:\Projetos_MM\MM_Projeto-Python_Django_Venv_API\cadastro_curso_womakers> python manage.py migrate
+
+                Operations to perform:
+                Apply all migrations: admin, auth, base, contenttypes, sessions
+                Running migrations:
+                Applying contenttypes.0001_initial... OK
+                Applying auth.0001_initial... OK
+                Applying admin.0001_initial... OK
+                Applying admin.0002_logentry_remove_auto_add... OK
+                Applying admin.0003_logentry_add_action_flag_choices... OK
+                Applying contenttypes.0002_remove_content_type_name... OK
+                Applying auth.0002_alter_permission_name_max_length... OK
+                Applying auth.0003_alter_user_email_max_length... OK
+                Applying auth.0004_alter_user_username_opts... OK
+                Applying auth.0005_alter_user_last_login_null... OK
+                Applying auth.0006_require_contenttypes_0002... OK
+                Applying auth.0007_alter_validators_add_error_messages... OK
+                Applying auth.0008_alter_user_username_max_length... OK
+                Applying auth.0009_alter_user_last_name_max_length... OK
+                Applying auth.0010_alter_group_name_max_length... OK
+                Applying auth.0011_update_proxy_permissions... OK
+                Applying auth.0012_alter_user_first_name_max_length... OK
+                Applying base.0001_initial... OK
+                Applying sessions.0001_initial... OK
+                (cadastro_curso_womakers) PS C:\Projetos_MM\MM_Projeto-Python_Django_Venv_API\cadastro_curso_womakers> 
+
+            08 - Para conferir o arquivo .db
+
+            1- Clique duas vezes para abrir o arquivo db.sqlite 
+            2- Clique no botão central azul que aparecerá na tela "Open Anywaw"
+            3- Barra superior - clicar na segunda opção SQLite Viewer.
+
+            ou: Dê dois cliques direto no arquivo .db e ele abrirá o banco de dados com todas as tabelas
+
+            Localize a base_cadastro e verifique se abriu as colunas como desejado!!!
+
+            Obs.: O campo Id é gerado automaticamente.
+
+            09 - Conexão do Forms com Models (Para Gravar Informações)
+
+            Fazer a conexão do formulário template com o banco de dados:
+            - vamos ao arquivo que trabalha com a lógica do nosso projeto: views.py
+            - NO ARQUIVO:
+            #Importar a nova models/tabela:
+            from base.models import Cadastro
+
+            # views.py Criar lógica informando que a view precisa salvar a informação
+
+            10 - Models Class META -> evita que fiquemos repetindo dados e colunas
+
+            from django import forms
+            from base.models import Cadastro
+            
+            class CadastroForm(forms.ModelForm):
+                # A Classe Meta existe para eivitar repetição de código
+                class Meta:
+                    #Models=Tabelas
+                    model = Cadastro
+                    #Fields=Campos
+                    fields = ['nome', 'email', 'senha']
+            
+            #Este é o padrão que evita repetição de código conforme ocorre no arquivo: forms_duplicando.py
+
+            # Da para Limpar o views mais um pouco:
+
+            Pode Retirar esse pedaço e substituir por: form.save()
+            <!--             
+            ## Quarto -> Se inf digitadas corretamente: inserir lógica para Salvar como Dicionário
+            ## De que forma irá trabalhar no db
+            # nome = form.cleaned_data['nome']
+            # email = form.cleaned_data['email']
+            # senha = form.cleaned_data['senha']
+            ## Criar a informação na tabela no db
+            # Cadastro.objects.create(nome=nome, email=email, senha=senha)
+            -->
+        </p>
+        <p>
+            <h4> Filtros - Buscas - Admin </h4>
+
+            Django Administration - já é criado na instalação
+            Para começar a operar essa parte Admin, precisamos criar um Super Usuário Administrador!
+            Vamos criar no Terminal esse Super Usuário:
+            <!-- Servidor Parado (crtl+c) mas Dentro do Ambiente Virtual -->
+
+            => python manage.py createsuperuser
+
+            (cadastro_curso_womakers) PS C:\Projetos_MM\MM_Projeto-Python_Django_Venv_API\cadastro_curso_womakers> python manage.py createsuperuser
+            Username (leave blank to use 'mmnol'): marcia
+            Email address: marcia@gmail.com
+            Password: (1331) #Fica oculto no terminal
+            Password (again):(1331)
+            This password is too short. It must contain at least 8 characters.
+            This password is entirely numeric.
+            Bypass password validation and create user anyway? [y/N]: y
+            Superuser created successfully.
+
+            Página -> http://127.0.0.1:8000/admin/
+
+
+            Usando a área Administrativa: Super Usuário (tipo funcionários e não usuários)
+            - No arquivo: urls.py? e admin.py 
+
+        
+            <!--  -->
+            from django.contrib import admin
+            from base.models import Cadastro
+
+            # Register your models here.
+            @admin.register(Cadastro)
+            class CadastroAdmin(admin.ModelAdmin):
+                list_display = ['nome', 'email', 'data']
+                search_fields = ['nome', 'email']
+                list_filter = ['data']
+
+            Se excluirmos os usuários dentro do Django administration, ele some do arquivo banco de dados também!!!
+
+            Parei no dia 16-02-2024
+            <!-- ? -->
+
+            NO TERMINAL POWERSHELL NO VSCODE:
+            Para entrar na Pasta do Ambiente Virtual => cd .\cadastro_curso_womakers
+            Para Rodar o Ambiente Virtual => .\Scripts\activate
+            Para Rodar o Servidor: => python manage.py runserver 
+            No Navegador -> http://127.0.0.1:8000/Admin/ ou http://127.0.0.1:8000/inicio/ ou http://127.0.0.1:8000/cadastro/
+            Para Parar o Navegador => ctrl+c 
+            Limpar Terminal => clear
+            Para Criar SuperUsuário => python manage.py createsuperuser
+
+            <!-- Não Lembro
+            => python manage.py makemigrations
+            => python manage.py migrate 
+            => pip install django-bootstrap-v5
+            => python manage.py startapp base 
+            => django-admin startproject projeto_womakers .
+            => pip install django
+            => python -m ensurepip --upgrade
+            => pip --version
+            => python --version
+            => pip list
+            => python -m venv cadastro_curso_womakers
+            => pip install virtualenv
+            => pip install python==3.12.1
+            -->
+
         </p>
 
     </main>
